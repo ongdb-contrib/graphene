@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://ongdb-contrib.github.io/graphene",
   "scripts": {
     "build": "webpack --config=webpack.config.js",
     "serve": "webpack-dev-server  --config=webpack.config.js",
@@ -31,6 +32,5 @@
     "jquery-jsonview": "1.2.3",
     "preact": "7.2.0",
     "md5": "2.3.0"
-  },
-  "homepage": "https://ongdb-contrib.github.io/graphene"
+  }
 }
