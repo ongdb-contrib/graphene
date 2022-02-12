@@ -1,0 +1,35 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config=webpack.config.js",
+    "serve": "webpack-dev-server  --config=webpack.config.js",
+    "start": "webpack-dev-server --disableHostCheck=true --config webpack.config.js --progress --colors --display-error-details",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.0.1",
+    "babel-preset-es2015": "^6.0.15",
+    "babel-preset-react": "^6.0.15",
+    "css-loader": "^0.28.0",
+    "eslint": "^1.10.3",
+    "eslint-loader": "^1.2.0",
+    "style-loader": "^0.16.1",
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "codemirror": "^5.25.0",
+    "d3": "3.5.13",
+    "jquery": "1.12.4",
+    "jquery-jsonview": "1.2.3",
+    "preact": "7.2.0",
+    "md5": "2.3.0"
+  }
+}
