@@ -45,7 +45,7 @@ jobs:
      - name: Deploy
        uses: JamesIves/github-pages-deploy-action@releases/v3
        with:
-         #GRAPH_TOKEN: ${{ secrets.GRAPH_TOKEN }}
+         deploy_key: ${{ secrets.GRAPH_TOKEN }}
          BRANCH: pages
          FOLDER: ./
          #github_token: ${{ secrets.GRAPH_TOKEN }}
