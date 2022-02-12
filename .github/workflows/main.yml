@@ -47,7 +47,7 @@ jobs:
        with:
          GRAPH_TOKEN: ${{ secrets.GRAPH_TOKEN }}
          BRANCH: pages
-         FOLDER: build
+         FOLDER: app
          #github_token: ${{ secrets.GRAPH_TOKEN }}
          #publish_branch: main
          #publish_dir: ./build
