@@ -46,9 +46,9 @@ jobs:
        uses: JamesIves/github-pages-deploy-action@releases/v3
        with:
          #ACCESS_TOKEN: ${{ secrets.GRAPH_TOKEN }}
-         #BRANCH: main
+         BRANCH: main
          #FOLDER: ./
          github_token: ${{ secrets.GRAPH_TOKEN }}
-         publish_branch: main
+         #publish_branch: main
          publish_dir: ./build
          
