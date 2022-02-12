@@ -41,11 +41,11 @@ jobs:
      - name: Install and Build
        run: |
          npm install
-         npm start
+         npm build
      - name: Deploy
        uses: JamesIves/github-pages-deploy-action@releases/v3
        with:
-         #ACCESS_TOKEN: ${{ secrets.GRAPH_TOKEN }}
+         GRAPH_TOKEN: ${{ secrets.GRAPH_TOKEN }}
          BRANCH: pages
          #FOLDER: build
          #github_token: ${{ secrets.GRAPH_TOKEN }}
