@@ -47,8 +47,8 @@ jobs:
        with:
          #ACCESS_TOKEN: ${{ secrets.GRAPH_TOKEN }}
          BRANCH: main
-         #FOLDER: ./
+         FOLDER: ./build
          github_token: ${{ secrets.GRAPH_TOKEN }}
          #publish_branch: main
-         publish_dir: ./build
+         #publish_dir: ./build
          
