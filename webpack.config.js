@@ -17,7 +17,7 @@ module.exports = {
     proxy: {
       '/ongdb-graphene': {
         target: 'http://localhost:8081/', // 接口服务地址
-        changeOrigin: true, // 加了这个属性，那后端收到的请求头中的host是目标地址 target
+        changeOrigin: true, // 加了这个属性，那后端收到的请求头中的host是目标地址target
         pathRewrite: { '^/': '/' },
         secure: false, // 若代理的地址是https协议，需要配置这个属性false
       }
