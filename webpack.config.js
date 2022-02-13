@@ -13,7 +13,7 @@ module.exports = {
     disableHostCheck: true,
     host: '0.0.0.0',
     port: 8080,
-    // webpack中的proxy就是解决前端跨域的方法之一。跨越问题：协议、域名、端口 三者只要有一个与服务端的不一致，就会报跨域错误
+    // webpack中的proxy就是解决前端跨域的方法之一。跨越问题：协议、域名、端口三者只要有一个与服务端的不一致，就会报跨域错误
     proxy: {
       '/ongdb-graphene': {
         target: 'http://localhost:8081/', // 接口服务地址
