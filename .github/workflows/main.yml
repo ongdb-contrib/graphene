@@ -9,12 +9,14 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [14.16.1]
     
     steps:
     - uses: actions/checkout@v2
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -34,3 +36,4 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
         FOLDER: ./
+
