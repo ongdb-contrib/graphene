@@ -36,7 +36,3 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
         FOLDER: ./
-    - name: Serve
-      run: |
-         npm run serve
-         
