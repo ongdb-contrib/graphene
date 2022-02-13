@@ -1,76 +1,28 @@
-# This is a basic workflow to help you get started with Actions
+name: NodeJS with Webpack
 
-name: Graphene Build and Deploy
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build-and-deploy:
-    # The type of runner that the job will run on
+  build:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      matrix:
+        node-version: [14.16.1]
+    
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- uses: actions/checkout@v2
+    - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      #- name: Run a one-line script
-      #  run: echo Hello, world!
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
 
-      # Runs a set of commands using the runners shell
-      #- name: Run a multi-line script
-      #  run: |
-      #    echo Add other actions to build,
-      #    echo test, and deploy your project.
-     - name: Dependencies Environment
-       run: |
-         #apt-get install yum
-         #yum install -y npm maven
-         #npm i --package-lock-only
-         #npm audit fix --force
-         #npm install -g cnpm -registry=https://registry.npm.taobao.org
-         #npm install webpack@4.46.0 webpack-cli@3.3.12 webpack-dev-server@3.11.0 -g
-         npm install clean-webpack-plugin@3.0.0 \
-                     css-loader@3.6.0 \
-                     file-loader@6.0.0 \
-                     html-loader@1.1.0 \
-                     html-webpack-harddisk-plugin@1.0.2 \
-                     html-webpack-plugin@4.5.2 \
-                     mini-css-extract-plugin@0.9.0 \
-                     node-sass@4.14.1 \
-                     optimize-css-assets-webpack-plugin@5.0.3 \
-                     sass-loader@9.0.2 \
-                     style-loader@1.2.1 \
-                     url-loader@4.1.0 \
-                     copy-webpack-plugin@6.2.1 \
-                     glob@7.1.6 \
-                     jquery@3.5.1 \
-     - name: Checkout
-       uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
-       with:
-         persist-credentials: false
-     - name: Install and Build
-       run: |
-         npm install
-         npm run-script build
-     - name: Deploy
-       uses: JamesIves/github-pages-deploy-action@releases/v3
-       with:
-         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-         BRANCH: gh-pages
-         FOLDER: ./
-         
-         
-         
+    - name: Build
+      run: |
+        npm install
+        npx webpack
