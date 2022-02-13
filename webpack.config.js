@@ -26,7 +26,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build'),
     // publicPath: '/',
-    publicPath: 'https://ongdb-contrib.github.io/graphene/',
+    publicPath: '/build/',
     filename: 'bundle.js'
   },
   plugins: [
