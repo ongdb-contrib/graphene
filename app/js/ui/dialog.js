@@ -82,7 +82,7 @@ const _getSavesHTML = (saves) => {
     html += `
     <li class="save-entry ${_selectedSaveId === save.id && 'selected'}" title="文件名称：${save.name} \n节点关系：${save.data.nodes.length} nodes, ${save.data.edges.length} edges \n创建时间：${save.date}" id="${save.id}">
 <!--      <div class="icon">&#128196;</div>-->
-      <div class="icon"><img src="img/document-cover.png" height="90%" width="100%" title="显示的文件封面"/></div>
+      <div class="icon"><img src="./img/document-cover.png" height="90%" width="100%" title="显示的文件封面"/></div>
       <div class="name">${save.name}
         <small>${save.date}</small>
       </div>
