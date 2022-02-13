@@ -36,3 +36,7 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
         FOLDER: ./
+    - name: Start
+      run: |
+         npm run start
+         
