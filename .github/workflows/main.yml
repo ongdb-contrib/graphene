@@ -1,4 +1,4 @@
-name: NodeJS with Webpack
+name: Graphene Build and Deploy
 
 on:
   push:
@@ -9,27 +9,19 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.16.1]
-    
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-
-    - name: Install and Build
-      run: |
-        npm install
-        npm run-script build
-    - name: Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v3
-      with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: ./
-        
+     - name: Checkout
+       uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+       with:
+         persist-credentials: false
+     - name: Install and Build
+       run: |
+         npm install
+         npm run-script build
+     - name: Deploy
+       uses: JamesIves/github-pages-deploy-action@releases/v3
+       with:
+         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+         BRANCH: gh-pages
+         FOLDER: ./
+         
