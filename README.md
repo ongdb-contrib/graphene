@@ -1,7 +1,7 @@
 # graphene
 >使用cnpm命令启动，速度会更快
-1. git clone https://github.com/ongdb-contrib/ongdb-graphene.git
-2. cd browser
+1. git clone https://github.com/ongdb-contrib/graphene.git
+2. cd graphene
 3. npm install
 4. npm start 【cnpm start\cnpm run serve\cnpm run build】
 5. open http://localhost:8080/app/
@@ -24,14 +24,14 @@ a399f5a3-8751-491a-bd69-be7c94ec39e2
 ```
 unzip -d ./graphene/ graphene.zip
 ```
-1. git clone https://github.com/ongdb-contrib/ongdb-graphene.git
-2. cd ongdb-graphene/browser
+1. git clone https://github.com/ongdb-contrib/graphene.git
+2. cd graphene
 3. npm install
 4. npm start
 5. open http://localhost:8080/app/
 
 ### Dockerfile
-- 在ongdb-graphene/browser目录下创建Dockerfile文件，打包前端docker镜像即可
+- 在graphene目录下创建Dockerfile文件，打包前端docker镜像即可
 ```
 FROM centos
 USER root
