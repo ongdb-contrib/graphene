@@ -66,4 +66,8 @@ sudo docker build -t graphene:v-1.0.0 .
 ```
 sudo docker run -p 8080:8080 graphene:v-1.0.0 bash -c "cnpm install && cnpm start"
 ```
-
+- DockerHub运行
+```
+docker run -it -p 3000:3000 grapher01110/graphene:main-2022-02-14-17-11-54
+http://localhost:3000/
+```
