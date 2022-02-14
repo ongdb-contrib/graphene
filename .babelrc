@@ -12,5 +12,12 @@
         "pragma": "preact.h"
       }
     ]
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["preact-cli/babel", { "modules": "commonjs" }]
+      ]
+    }
+  }
 }
