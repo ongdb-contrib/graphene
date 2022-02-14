@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://ongdb-contrib.github.io/graphene",
   "scripts": {
-    "build:gh": "GITHUB_PAGES=graphene preact build && dot-json ./build/manifest.json start_url \"/graphene/\"",
     "build": "webpack --config=webpack.config.js",
     "serve": "webpack-dev-server  --config=webpack.config.js",
     "start": "webpack-dev-server --disableHostCheck=true --config webpack.config.js --progress --colors --display-error-details",
