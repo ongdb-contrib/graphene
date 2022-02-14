@@ -19,6 +19,6 @@ RUN cnpm install clean-webpack-plugin@3.0.0 \
                  url-loader@4.1.0 \
                  copy-webpack-plugin@6.2.1 \
                  glob@7.1.6 jquery@3.5.1
-WORKDIR /app/browser
+WORKDIR /app
 CMD ["cnpm","install"]
 ENTRYPOINT ["cnpm", "start"]
