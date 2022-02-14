@@ -33,5 +33,5 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./build
+        PUBLISH_DIR: ./graphene
         
