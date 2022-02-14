@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://ongdb-contrib.github.io/graphene",
   "scripts": {
     "build": "webpack --config=webpack.config.js",
     "serve": "webpack-dev-server  --config=webpack.config.js",
     "start": "webpack-dev-server --disableHostCheck=true --config webpack.config.js --progress --colors --display-error-details",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:gh": "GITHUB_PAGES=graphene npm run build && dot-json ./build/manifest.json start_url \"/graphene/\""
   },
   "author": "",
   "license": "ISC",
