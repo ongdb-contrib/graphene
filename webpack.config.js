@@ -25,7 +25,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, 'build'),
-    publicPath: '/',
+    publicPath: process.env.GITHUB_PAGES ? `/${process.env.GITHUB_PAGES}/` : '/';,
     filename: 'bundle.js'
   },
   plugins: [
