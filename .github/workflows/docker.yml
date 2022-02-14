@@ -36,7 +36,7 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USER }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
-      # Extract metadata (tags, labels) for Docker
+      # Extract metadata (tags, labels) for Docker 
       # https://github.com/docker/metadata-action
       - name: Extract Docker metadata
         id: meta
