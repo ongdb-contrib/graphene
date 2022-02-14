@@ -3,9 +3,10 @@ USER root
 WORKDIR /app
 ADD . /app/
 RUN yum install -y npm maven
-RUN npm install -g cnpm -registry=https://registry.npm.taobao.org
+#RUN npm install -g cnpm -registry=https://registry.npm.taobao.org
 RUN npm install webpack@4.46.0 webpack-cli@3.3.12 webpack-dev-server@3.11.0 -g
-RUN cnpm install clean-webpack-plugin@3.0.0 \
+#RUN cnpm install clean-webpack-plugin@3.0.0 \
+RUN npm install clean-webpack-plugin@3.0.0 \
                  css-loader@3.6.0 \
                  file-loader@6.0.0 \
                  html-loader@1.1.0 \
@@ -20,5 +21,8 @@ RUN cnpm install clean-webpack-plugin@3.0.0 \
                  copy-webpack-plugin@6.2.1 \
                  glob@7.1.6 jquery@3.5.1
 WORKDIR /app
-CMD ["cnpm","install"]
-ENTRYPOINT ["cnpm", "start"]
+#CMD ["cnpm","install"]
+#ENTRYPOINT ["cnpm", "start"]
+CMD ["npm","install"]
+ENTRYPOINT ["npm", "start"]
+
