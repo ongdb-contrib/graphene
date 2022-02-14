@@ -1,4 +1,4 @@
-name: Graphene Build and Deploy - Docker
+name: Graphene Build and Deploy - DockerHub
 
 on:
   # Trigger the workflow on push or pull request,
