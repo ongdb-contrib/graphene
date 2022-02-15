@@ -7,31 +7,34 @@ on:
     branches: [ main ]
 
 jobs:
-  build-deploy:
-    runs-on: ubuntu-18.04
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.16.1]
+
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-    - name: Setup Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Cache dependencies
-      uses: actions/cache@v1
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - run: npm ci
+      - name: Checkout
+        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        with:
+          persist-credentials: false
+      - name: Install and Build
+        run: |
+          npm install
+          npm run-script build
+          npm run-script start
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
 
-    - run: npm run build
- 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: /
-        
