@@ -30,7 +30,6 @@ jobs:
         run: |
           npm install
           npm run-script build
-          npm run-script start
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
