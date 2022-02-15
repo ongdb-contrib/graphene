@@ -7,7 +7,7 @@
 5. open http://localhost:8080/app/
 
 ## introduction
->图数据模型设计工具
+>[图数据模型设计工具](https://ongdb-contrib.github.io/graphene/demo.html)
 
 ![intro-1](images/intro-1.jpg)
 ![intro-2](images/intro-2.jpg)
