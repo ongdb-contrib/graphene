@@ -1,12 +1,17 @@
-# graphene
->使用cnpm命令启动，速度会更快
-1. git clone https://github.com/ongdb-contrib/graphene.git
-2. cd graphene
-3. npm install
-4. npm start 【cnpm start\cnpm run serve\cnpm run build】
-5. open http://localhost:8080/app/
+# Graphene
+>Graphene是一个可视化WEB端工具，主要做属性图数据建模、图结构设计！
 
-## introduction
+## 谁可以使用它？
+>图数据工程师、算法工程师、数据内容工程师，其它需要用图的思维模式来做事情的小伙伴！
+
+## 核心功能
+1. 图结构与属性图设计
+2. 图数据模型上传下载与导出
+3. 图数据模型协作与分享
+4. 数据任务ID生成
+5. GraphQL/Cypher/Javascript等查询或接口代码的自动生成
+
+## Introduction
 >[图数据模型设计工具](https://ongdb-contrib.github.io/graphene/demo.html)
 
 ![intro-1](images/intro-1.jpg)
@@ -29,6 +34,11 @@ unzip -d ./graphene/ graphene.zip
 3. npm install
 4. npm start
 5. open http://localhost:8080/app/
+```
+其它信息
+Version: webpack 1.15.0
+v14.16.1
+```
 
 ### Dockerfile
 - 在graphene目录下创建Dockerfile文件，打包前端docker镜像即可
