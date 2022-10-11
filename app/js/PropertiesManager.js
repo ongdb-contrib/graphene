@@ -269,8 +269,6 @@ function refreshCache() {
  * @private
  */
 function searchData(localStorageItem, localStorageItemSaves) {
-  console.log(localStorageItem);
-  console.log(localStorageItemSaves);
   localStorageItemSaves.push({ data: localStorageItem });
   const data = [];
   const mapDuplicate = {};
