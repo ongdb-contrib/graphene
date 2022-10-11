@@ -32,12 +32,13 @@ unzip -d ./graphene/ graphene.zip
 1. git clone https://github.com/ongdb-contrib/graphene.git
 2. cd graphene
 3. npm install
-4. npm start
-5. open http://localhost:8080/app/
+4. npm run-script build
+5. npm start
+6. open http://localhost:8080/app/
+
 ```
-其它信息
-Version: webpack 1.15.0
-v14.16.1
+npm cache clean --force
+npm install --save-dev webpack@1.15.0
 ```
 
 ### Dockerfile
@@ -68,6 +69,7 @@ WORKDIR /app/browser
 #CMD ["cnpm","install"]
 #ENTRYPOINT ["cnpm", "start"]
 ```
+
 - 打包
 ```
 sudo docker build -t graphene:v-1.0.0 .
