@@ -650,66 +650,66 @@ var highlightItemOnlyInOutline = function(id) {
 </ul>
 <div class="code-toolbar"><pre class="language-txt line-numbers"><code class="source-line language-txt" data-source-line="28">a399f5a3-8751-491a-bd69-be7c94ec39e2
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
-<h2 id="部署环境" class="source-line" data-source-line="32">部署环境<a class="vx-header-anchor" href="#部署环境" vx-data-anchor-icon="¶"></a></h2>
-<div class="code-toolbar"><pre class="language-txt line-numbers"><code class="source-line language-txt" data-source-line="33">unzip -d ./graphene/ graphene.zip
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
-<ol>
-<li class="source-line" data-source-line="36">git clone <a href="https://github.com/ongdb-contrib/graphene.git">https://github.com/ongdb-contrib/graphene.git</a></li>
-<li class="source-line" data-source-line="37">cd graphene</li>
-<li class="source-line" data-source-line="38">npm install</li>
-<li class="source-line" data-source-line="39">npm start</li>
-<li class="source-line" data-source-line="40">open <a href="http://localhost:8080/app/">http://localhost:8080/app/</a></li>
-</ol>
-<div class="code-toolbar"><pre class="language-txt line-numbers"><code class="source-line language-txt" data-source-line="41">其它信息
-Version: webpack 1.15.0
-v14.16.1
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
-<h3 id="dockerfile" class="source-line" data-source-line="47">Dockerfile<a class="vx-header-anchor" href="#dockerfile" vx-data-anchor-icon="¶"></a></h3>
-<ul>
-<li class="source-line" data-source-line="48">在graphene目录下创建Dockerfile文件，打包前端docker镜像即可</li>
-</ul>
-<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="49">FROM centos
-<span class="token environment constant">USER</span> root
-WORKDIR /app
-ADD <span class="token builtin class-name">.</span> /app/
-RUN yum <span class="token function">install</span> -y <span class="token function">npm</span> maven
-RUN <span class="token function">npm</span> <span class="token function">install</span> -g cnpm -registry<span class="token operator">=</span>https://registry.npm.taobao.org
-RUN <span class="token function">npm</span> <span class="token function">install</span> webpack@4.46.0 webpack-cli@3.3.12 webpack-dev-server@3.11.0 -g
-RUN cnpm <span class="token function">install</span> clean-webpack-plugin@3.0.0 <span class="token punctuation">\</span>
-                 css-loader@3.6.0 <span class="token punctuation">\</span>
-                 file-loader@6.0.0 <span class="token punctuation">\</span>
-                 html-loader@1.1.0 <span class="token punctuation">\</span>
-                 html-webpack-harddisk-plugin@1.0.2 <span class="token punctuation">\</span>
-                 html-webpack-plugin@4.5.2 <span class="token punctuation">\</span>
-                 mini-css-extract-plugin@0.9.0 <span class="token punctuation">\</span>
-                 node-sass@4.14.1 <span class="token punctuation">\</span>
-                 optimize-css-assets-webpack-plugin@5.0.3 <span class="token punctuation">\</span>
-                 sass-loader@9.0.2 <span class="token punctuation">\</span>
-                 style-loader@1.2.1 <span class="token punctuation">\</span>
-                 url-loader@4.1.0 <span class="token punctuation">\</span>
-                 copy-webpack-plugin@6.2.1 <span class="token punctuation">\</span>
-                 glob@7.1.6 jquery@3.5.1
-WORKDIR /app/browser
-<span class="token comment">#CMD ["cnpm","install"]</span>
-<span class="token comment">#ENTRYPOINT ["cnpm", "start"]</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
-<ul>
-<li class="source-line" data-source-line="75">打包</li>
-</ul>
-<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="76"><span class="token function">sudo</span> docker build -t graphene:v-1.0.0 <span class="token builtin class-name">.</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
-<ul>
-<li class="source-line" data-source-line="79">启动</li>
-</ul>
-<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="80"><span class="token function">sudo</span> docker run -p <span class="token number">8080</span>:8080 graphene:v-1.0.0 <span class="token function">bash</span> -c <span class="token string">"cnpm install &amp;&amp; cnpm start"</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
-<ul>
-<li class="source-line" data-source-line="83">DockerHub运行</li>
-</ul>
-<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="84">docker run -it -p <span class="token number">3000</span>:3000 grapher01110/graphene:main-2022-02-14-17-11-54
-http://localhost:3000/
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>
-</div>
+<!--<h2 id="部署环境" class="source-line" data-source-line="32">部署环境<a class="vx-header-anchor" href="#部署环境" vx-data-anchor-icon="¶"></a></h2>-->
+<!--<div class="code-toolbar"><pre class="language-txt line-numbers"><code class="source-line language-txt" data-source-line="33">unzip -d ./graphene/ graphene.zip-->
+<!--<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>-->
+<!--<ol>-->
+<!--<li class="source-line" data-source-line="36">git clone <a href="https://github.com/ongdb-contrib/graphene.git">https://github.com/ongdb-contrib/graphene.git</a></li>-->
+<!--<li class="source-line" data-source-line="37">cd graphene</li>-->
+<!--<li class="source-line" data-source-line="38">npm install</li>-->
+<!--<li class="source-line" data-source-line="39">npm start</li>-->
+<!--<li class="source-line" data-source-line="40">open <a href="http://localhost:8080/app/">http://localhost:8080/app/</a></li>-->
+<!--</ol>-->
+<!--<div class="code-toolbar"><pre class="language-txt line-numbers"><code class="source-line language-txt" data-source-line="41">其它信息-->
+<!--Version: webpack 1.15.0-->
+<!--v14.16.1-->
+<!--<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>-->
+<!--<h3 id="dockerfile" class="source-line" data-source-line="47">Dockerfile<a class="vx-header-anchor" href="#dockerfile" vx-data-anchor-icon="¶"></a></h3>-->
+<!--<ul>-->
+<!--<li class="source-line" data-source-line="48">在graphene目录下创建Dockerfile文件，打包前端docker镜像即可</li>-->
+<!--</ul>-->
+<!--<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="49">FROM centos-->
+<!--<span class="token environment constant">USER</span> root-->
+<!--WORKDIR /app-->
+<!--ADD <span class="token builtin class-name">.</span> /app/-->
+<!--RUN yum <span class="token function">install</span> -y <span class="token function">npm</span> maven-->
+<!--RUN <span class="token function">npm</span> <span class="token function">install</span> -g cnpm -registry<span class="token operator">=</span>https://registry.npm.taobao.org-->
+<!--RUN <span class="token function">npm</span> <span class="token function">install</span> webpack@4.46.0 webpack-cli@3.3.12 webpack-dev-server@3.11.0 -g-->
+<!--RUN cnpm <span class="token function">install</span> clean-webpack-plugin@3.0.0 <span class="token punctuation">\</span>-->
+<!--                 css-loader@3.6.0 <span class="token punctuation">\</span>-->
+<!--                 file-loader@6.0.0 <span class="token punctuation">\</span>-->
+<!--                 html-loader@1.1.0 <span class="token punctuation">\</span>-->
+<!--                 html-webpack-harddisk-plugin@1.0.2 <span class="token punctuation">\</span>-->
+<!--                 html-webpack-plugin@4.5.2 <span class="token punctuation">\</span>-->
+<!--                 mini-css-extract-plugin@0.9.0 <span class="token punctuation">\</span>-->
+<!--                 node-sass@4.14.1 <span class="token punctuation">\</span>-->
+<!--                 optimize-css-assets-webpack-plugin@5.0.3 <span class="token punctuation">\</span>-->
+<!--                 sass-loader@9.0.2 <span class="token punctuation">\</span>-->
+<!--                 style-loader@1.2.1 <span class="token punctuation">\</span>-->
+<!--                 url-loader@4.1.0 <span class="token punctuation">\</span>-->
+<!--                 copy-webpack-plugin@6.2.1 <span class="token punctuation">\</span>-->
+<!--                 glob@7.1.6 jquery@3.5.1-->
+<!--WORKDIR /app/browser-->
+<!--<span class="token comment">#CMD ["cnpm","install"]</span>-->
+<!--<span class="token comment">#ENTRYPOINT ["cnpm", "start"]</span>-->
+<!--<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>-->
+<!--<ul>-->
+<!--<li class="source-line" data-source-line="75">打包</li>-->
+<!--</ul>-->
+<!--<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="76"><span class="token function">sudo</span> docker build -t graphene:v-1.0.0 <span class="token builtin class-name">.</span>-->
+<!--<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>-->
+<!--<ul>-->
+<!--<li class="source-line" data-source-line="79">启动</li>-->
+<!--</ul>-->
+<!--<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="80"><span class="token function">sudo</span> docker run -p <span class="token number">8080</span>:8080 graphene:v-1.0.0 <span class="token function">bash</span> -c <span class="token string">"cnpm install &amp;&amp; cnpm start"</span>-->
+<!--<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>-->
+<!--<ul>-->
+<!--<li class="source-line" data-source-line="83">DockerHub运行</li>-->
+<!--</ul>-->
+<!--<div class="code-toolbar"><pre class="language-shell line-numbers"><code class="source-line language-shell" data-source-line="84">docker run -it -p <span class="token number">3000</span>:3000 grapher01110/graphene:main-2022-02-14-17-11-54-->
+<!--http://localhost:3000/-->
+<!--<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><div class="toolbar"><div class="toolbar-item"><button>Copy</button></div></div></div>-->
+<!--</div>-->
         </div>
     </div>
     </div>

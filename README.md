@@ -26,9 +26,6 @@ a399f5a3-8751-491a-bd69-be7c94ec39e2
 ```
 
 ## 部署环境
-```
-unzip -d ./graphene/ graphene.zip
-```
 1. git clone https://github.com/ongdb-contrib/graphene.git
 2. cd graphene
 3. npm install
@@ -36,50 +33,37 @@ unzip -d ./graphene/ graphene.zip
 5. npm start
 6. open http://localhost:8080/app/
 
-```
-npm cache clean --force
-npm install --save-dev webpack@1.15.0
-```
-
 ### Dockerfile
-- 在graphene目录下创建Dockerfile文件，打包前端docker镜像即可
+- 在graphene目录下创建Dockerfile文件，打包前端docker镜像即可【解压graphene.7z，安装docker直接打包即可】
 ```
-FROM centos
-USER root
-WORKDIR /app
-ADD . /app/
-RUN yum install -y npm maven
-RUN npm install -g cnpm -registry=https://registry.npm.taobao.org
-RUN npm install webpack@4.46.0 webpack-cli@3.3.12 webpack-dev-server@3.11.0 -g
-RUN cnpm install clean-webpack-plugin@3.0.0 \
-                 css-loader@3.6.0 \
-                 file-loader@6.0.0 \
-                 html-loader@1.1.0 \
-                 html-webpack-harddisk-plugin@1.0.2 \
-                 html-webpack-plugin@4.5.2 \
-                 mini-css-extract-plugin@0.9.0 \
-                 node-sass@4.14.1 \
-                 optimize-css-assets-webpack-plugin@5.0.3 \
-                 sass-loader@9.0.2 \
-                 style-loader@1.2.1 \
-                 url-loader@4.1.0 \
-                 copy-webpack-plugin@6.2.1 \
-                 glob@7.1.6 jquery@3.5.1
-WORKDIR /app/browser
-#CMD ["cnpm","install"]
-#ENTRYPOINT ["cnpm", "start"]
+FROM node:14.15.1-stretch
+ENV NODE_ENV development
+# Add a work directory
+WORKDIR /graphene
+# Cache and Install dependencies
+COPY . .
+RUN chmod +777 ./node_modules/.bin/webpack
+RUN chmod +777 ./node_modules/.bin/webpack-dev-server
+#COPY package.json .
+RUN npm install
+RUN npm run-script build
+# Copy app files
+# Expose port
+EXPOSE 8080
+# Start the app
+CMD [ "npm", "start" ]
 ```
 
-- 打包
+- 打包docker镜像
 ```
 sudo docker build -t graphene:v-1.0.0 .
 ```
-- 启动
+- 查看镜像
 ```
-sudo docker run -p 8080:8080 graphene:v-1.0.0 bash -c "cnpm install && cnpm start"
+sudo docker images
 ```
-- DockerHub运行
+- 运行镜像
 ```
-docker run -it -p 3000:3000 grapher01110/graphene:main-2022-02-14-17-11-54
-http://localhost:3000/
+sudo docker run -p 8080:8080 graphene:v-1.0.0
 ```
+
