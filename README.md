@@ -71,4 +71,12 @@ sudo docker run -p 8080:8080 graphene:v-1.0.0
 ```
 sudo docker ps
 ```
+- 对镜像设置TAG
+```
+sudo docker tag graphene:v-1.0.0 localhost/model/graphene:v-1.0.0
+```
+- 提交到镜像服务器
+```
+sudo docker push localhost/model/graphene:v-1.0.0
+```
 
