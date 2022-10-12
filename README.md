@@ -34,8 +34,9 @@ a399f5a3-8751-491a-bd69-be7c94ec39e2
 6. open http://localhost:8080/app/
 
 ### Dockerfile
-- 在graphene目录下创建Dockerfile文件，打包前端docker镜像即可【解压graphene.7z，安装docker直接打包即可】
+- 在graphene目录下创建Dockerfile文件，打包前端docker镜像即可
 ```
+# 解压graphene.7z，安装docker直接打包即可
 FROM node:14.15.1-stretch
 ENV NODE_ENV development
 # Add a work directory
