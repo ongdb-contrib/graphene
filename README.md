@@ -67,4 +67,8 @@ sudo docker images
 ```
 sudo docker run -p 8080:8080 graphene:v-1.0.0
 ```
+- 查看docker容器中启动的进程
+```
+sudo docker ps
+```
 
