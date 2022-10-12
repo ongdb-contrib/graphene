@@ -4,8 +4,8 @@ ENV NODE_ENV development
 WORKDIR /graphene
 # Cache and Install dependencies
 COPY . .
-RUN chmod +777 ./node_modules/.bin/webpack
-RUN chmod +777 ./node_modules/.bin/webpack-dev-server
+#RUN chmod +777 ./node_modules/.bin/webpack
+#RUN chmod +777 ./node_modules/.bin/webpack-dev-server
 #COPY package.json .
 RUN npm install
 RUN npm run-script build
