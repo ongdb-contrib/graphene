@@ -8,8 +8,20 @@
 <body>
 <script src="../build/bundle.js"></script>
 <script>
-    localStorage.setItem('nma.grad3ph', JSON.stringify({"nodes":[],"edges":[]}));
-    localStorage.setItem('nma.grad3ph.saves', JSON.stringify([]));
+    const nmaGrad3phKey = 'nma.grad3ph'
+    const nmaGrad3ph = {"nodes":[],"edges":[]}
+    const nmaGrad3phSavesKey = 'nma.grad3ph.saves'
+    const nmaGrad3phSaves = []
+
+    const nmaGrad3phValue = localStorage.getItem(nmaGrad3phKey)
+    const nmaGrad3phSavesValue = localStorage.getItem(nmaGrad3phSavesKey)
+
+    if (nmaGrad3phValue === undefined) {
+        localStorage.setItem(nmaGrad3phKey, JSON.stringify(nmaGrad3ph));
+    }
+    if (nmaGrad3phSavesValue === undefined) {
+        localStorage.setItem(nmaGrad3phSavesKey, JSON.stringify(nmaGrad3phSaves));
+    }
 </script>
 <!--<script src="../build/bundle.js"></script>-->
 </body>
