@@ -17,10 +17,15 @@
     const nmaGrad3phSavesValue = localStorage.getItem(nmaGrad3phSavesKey)
     console.log(nmaGrad3phValue)
     console.log(nmaGrad3phSavesValue)
-    if (nmaGrad3phValue === undefined) {
+
+    function isNull(nmaGrad3phValue) {
+        return nmaGrad3phValue === undefined || nmaGrad3phValue === null
+    }
+
+    if (isNull(nmaGrad3phValue)) {
         localStorage.setItem(nmaGrad3phKey, JSON.stringify(nmaGrad3ph));
     }
-    if (nmaGrad3phSavesValue === undefined) {
+    if (isNull(nmaGrad3phSavesValue)) {
         localStorage.setItem(nmaGrad3phSavesKey, JSON.stringify(nmaGrad3phSaves));
     }
 </script>
