@@ -6,7 +6,6 @@
   <link rel="icon" type="image/png" href="./img/document-cover.png"/>
 </head>
 <body>
-<script src="../build/bundle.js"></script>
 <script>
     const nmaGrad3phKey = 'nma.grad3ph'
     const nmaGrad3ph = {"nodes":[],"edges":[]}
@@ -16,6 +15,8 @@
     const nmaGrad3phValue = localStorage.getItem(nmaGrad3phKey)
     const nmaGrad3phSavesValue = localStorage.getItem(nmaGrad3phSavesKey)
 
+    console.log(nmaGrad3phValue)
+    console.log(nmaGrad3phSavesValue)
     function isNull(nmaGrad3phValue) {
         return nmaGrad3phValue === undefined || nmaGrad3phValue === null
     }
@@ -27,6 +28,6 @@
         localStorage.setItem(nmaGrad3phSavesKey, JSON.stringify(nmaGrad3phSaves));
     }
 </script>
-<!--<script src="../build/bundle.js"></script>-->
+<script src="../build/bundle.js"></script>
 </body>
 </html>
