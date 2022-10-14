@@ -49,6 +49,7 @@ const _getHTML = (saves) => `
           <button class="export-current-json left" style="display: none">Current Json</button>
           <button class="upload-json-file left" style="display: none">Upload Json File</button>
           <button class="import-from-json left" style="display: none">Import From Json</button>
+          <button class="import-from-arrows left" style="display: none">Import From Arrows</button>
           <button class="download-json-file left" style="display: none">Download Json File</button>
           <button class="associate-with-graph-databases left" style="display: none">Graph Databases</button>
         </div>
@@ -164,7 +165,8 @@ const _setupDialog = () => {
             NotificationManager.success('Save successfully loaded.');
             Dialog.close();
           } catch (e) {
-            alert('【请参考样例数据】\n【主要为data中nodes和edges列表中数据格式需要一致】\n请输入标准的JSON格式：' + ImportManager.getDemoJson());
+            console.log(ImportManager.getDemoJson());
+            alert('【请参考样例数据】\n【数据格式需要一致，样例数据已经打印到F12控制台】\n请输入标准的JSON格式：' + ImportManager.getDemoJson());
           }
         } else {
           SaveManager.load(_selectedSaveId);
@@ -193,6 +195,9 @@ const _setupDialog = () => {
         break;
       case 'import-from-json':
         ImportManager.singleModelGraphJson();
+        break;
+      case 'import-from-arrows':
+        ImportManager.singleModelGraphArrows();
         break;
       case 'download-json-file':
         ImportManager.downloadJsonFromOS();
@@ -247,6 +252,7 @@ const _showWhich = (forSave) => {
     case CONST.MENU_IMPORT:
       document.querySelector('.dialog .header .span').innerHTML = 'Import Graphs:';
       document.querySelector('.dialog .header .import-from-json').style.display = 'inline';
+      document.querySelector('.dialog .header .import-from-arrows').style.display = 'inline';
       document.querySelector('.dialog .header .download-json-file').style.display = 'inline';
       isShowDeleteBtn(false);
       break;
