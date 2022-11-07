@@ -59,6 +59,48 @@ const ExportManager = {
   },
 
   /**
+  * @description 生成扩展模式的JSON数据，可支持智能搜索相关函数
+  * @returns {Object}
+  */
+  schema: () => {
+    const data = {
+      graph: {
+        nodes: DataManager.getSchemaNodes(),
+        relationships: DataManager.getSchemaEdges()
+      }
+    };
+    const vl = document.getElementById('overlay-operation-dialog-body-span-id');
+    if (vl !== null) {
+      Dialog.open(false, CONST.MENU_EXPORT);
+    } else {
+      $('.overlay-dialog.opened .dialog .body').JSONView(data);
+      const comElement = overlayOperationDialogBodySpan();
+      comElement.innerHTML = ['JSON字符串：', JSON.stringify(data)].join('');
+    }
+  },
+
+  /**
+  * @description 生成可视化工具支持的第三方格式
+  * @returns {Object}
+  */
+  vis: () => {
+    const data = {
+      graph: {
+        nodes: DataManager.getVisNodes(),
+        relationships: DataManager.getVisEdges()
+      }
+    };
+    const vl = document.getElementById('overlay-operation-dialog-body-span-id');
+    if (vl !== null) {
+      Dialog.open(false, CONST.MENU_EXPORT);
+    } else {
+      $('.overlay-dialog.opened .dialog .body').JSONView(data);
+      const comElement = overlayOperationDialogBodySpan();
+      comElement.innerHTML = ['JSON字符串：', JSON.stringify(data)].join('');
+    }
+  },
+
+  /**
    * @description 上传JSON文件到服务器
    * @returns {Object}
    */

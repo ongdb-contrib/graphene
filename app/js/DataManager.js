@@ -12,6 +12,7 @@ import reposition from './utils/reposition';
 
 let _nodes = [];
 let _edges = [];
+let _tempNodesMap = new Map();
 
 const _updateCallbacks = new Set();
 
@@ -251,6 +252,78 @@ const DataManager = {
      * @returns {Array}
      */
   getAllNodes: () => _nodes.map(n => n.copy),
+
+  getSchemaNodes: () => {
+    _tempNodesMap = new Map();
+    const nodes = _nodes.map(n => n.copy);
+    const schemaNode = [];
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+      const idValue = (i + 1).toString();
+      const map = {
+        properties_filter: [],
+        id: (i + 1).toString(),
+        labels: [node.label]
+      };
+      schemaNode.push(map);
+      _tempNodesMap.set(node.id, idValue);
+    }
+    return schemaNode;
+  },
+
+  getSchemaEdges: () => {
+    const edges = _edges.map(e => e.copy);
+    const schemaEdges = [];
+    for (let i = 0; i < edges.length; i++) {
+      const edge = edges[i];
+      const map = {
+        startNode: _tempNodesMap.get(edge.startNodeId),
+        properties_filter: [],
+        id: (i + 1).toString(),
+        type: edge.label,
+        endNode: _tempNodesMap.get(edge.endNodeId)
+      };
+      schemaEdges.push(map);
+    }
+    _tempNodesMap.clear();
+    return schemaEdges;
+  },
+
+  getVisNodes: () => {
+    _tempNodesMap = new Map();
+    const nodes = _nodes.map(n => n.copy);
+    const schemaNode = [];
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+      const idValue = (i + 1).toString();
+      const map = {
+        properties:
+          {
+            name: node.label
+          },
+        id: idValue
+      };
+      schemaNode.push(map);
+      _tempNodesMap.set(node.id, idValue);
+    }
+    return schemaNode;
+  },
+
+  getVisEdges: () => {
+    const edges = _edges.map(e => e.copy);
+    const schemaEdges = [];
+    for (let i = 0; i < edges.length; i++) {
+      const edge = edges[i];
+      const map = {
+        type: edge.label,
+        endNode: _tempNodesMap.get(edge.startNodeId),
+        startNode: _tempNodesMap.get(edge.endNodeId)
+      };
+      schemaEdges.push(map);
+    }
+    _tempNodesMap.clear();
+    return schemaEdges;
+  },
 
   // TODO The data is not copied deeply all properties will not be saved in history on in a save entry
 

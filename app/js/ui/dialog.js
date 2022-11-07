@@ -47,6 +47,8 @@ const _getHTML = (saves) => `
           <span class="span">Saved graphs</span>
           <button class="export-all-json left" style="display: none">All Json</button>
           <button class="export-current-json left" style="display: none">Current Json</button>
+          <button class="export-schema-json left" style="display: none">Schema Json</button>
+          <button class="export-vis-json left" style="display: none">Vis Json</button>
           <button class="upload-json-file left" style="display: none">Upload Json File</button>
           <button class="import-from-json left" style="display: none">Import From Json</button>
           <button class="import-from-arrows left" style="display: none">Import From Arrows</button>
@@ -190,6 +192,12 @@ const _setupDialog = () => {
       case 'export-current-json':
         ExportManager.current();
         break;
+      case 'export-schema-json':
+        ExportManager.schema();
+        break;
+      case 'export-vis-json':
+        ExportManager.vis();
+        break;
       case 'upload-json-file':
         ExportManager.uploadJson();
         break;
@@ -246,6 +254,8 @@ const _showWhich = (forSave) => {
       document.querySelector('.dialog .header .span').innerHTML = 'Export Graphs:';
       document.querySelector('.dialog .header .export-all-json').style.display = 'inline';
       document.querySelector('.dialog .header .export-current-json').style.display = 'inline';
+      document.querySelector('.dialog .header .export-schema-json').style.display = 'inline';
+      document.querySelector('.dialog .header .export-vis-json').style.display = 'inline';
       document.querySelector('.dialog .header .upload-json-file').style.display = 'inline';
       isShowDeleteBtn(false);
       break;
