@@ -139,6 +139,11 @@ class MenuPanel extends Component {
     // svgDownload(d3.select('svg').node());
   }
 
+  svgStyleAdjust() {
+    Dialog.open(false, CONST.MENU_SVG_STYLE);
+    this.closeAll();
+  }
+
   undo() {
     HistoryManager.undo();
     this.closeAll();
@@ -161,6 +166,7 @@ class MenuPanel extends Component {
           <li className="menu-import-btn" onClick={ this.import.bind(this) }>&#128229; Import<small>(import)</small></li>
           <li className="menu-database-btn" onClick={ this.database.bind(this) }>&#128170; Database<small>(database)</small></li>
           <li className="menu-download-btn" onClick={ this.download.bind(this) }>&#x270d; Download<small>(download)</small></li>
+          <li className="menu-style-adjust-btn" onClick={ this.svgStyleAdjust.bind(this) }>🙉 Style<small>(style)</small></li>
           <li className="menu-undo-btn" onClick={ this.undo.bind(this) }>&#8617; Undo <small>(ctrl+z)</small></li>
           <li className="menu-redo-btn" onClick={ this.redo.bind(this) }>&#8618; Redo <small>(ctrl+y)</small></li>
           <li className="menu-delete-all-btn" onClick={ this.deleteAll.bind(this) }>&#10005; Delete all</li>

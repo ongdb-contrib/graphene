@@ -24,7 +24,6 @@ const _replaceData = (rawData) => {
   if (!rawData) {
     return DataManager;
   }
-
   const data = {
     nodes: rawData.nodes.map(nodeData => {
       const node = new Node(nodeData);
@@ -41,7 +40,6 @@ const _replaceData = (rawData) => {
   // reposition nodes if some of them is outside of the visible area
   _nodes = reposition(data.nodes) || _nodes;
   _edges = data.edges || _edges;
-
   return data;
 };
 

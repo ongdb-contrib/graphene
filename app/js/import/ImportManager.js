@@ -8,6 +8,7 @@ import DataManager from '../DataManager';
 import NotificationManager from '../NotificationManager';
 import Http from '../utils/http/Http';
 import SaveManager from '../SaveManager';
+import color from '../utils/color';
 
 let _downloadId;
 
@@ -128,6 +129,23 @@ function convertArrows(arrowsData) {
     return {"nodes": jsNodes, "edges": jsRelationships};
 }
 
+// function packEdges(data) {
+//   const nodeList = json['data'].nodes;
+//   const edges = json['data'].edges;
+//   const rgs = [];
+//   for (let i = 0; i < edges.length; i++) {
+//     const edge = edges[i];
+//     console.log(edge);
+//     if (!edge.hasOwnProperty('color')) {
+//       edge['color'] = color();
+//     }
+//     rgs.push(edge);
+//   }
+//   const rdata = { nodes: nodeList, edges: rgs };
+//   console.log(rdata);
+//   return data;
+// }
+
 /** ====================================================================================================================
  * @type {Object}
  ==================================================================================================================== */
@@ -216,6 +234,7 @@ const ImportManager = {
     const json = JSON.parse(inputData);
     if (json['data'] !== undefined && json['data'] !== null) {
       return json['data'];
+      // return packEdges(json['data']);
     } else {
       return convertArrows(json);
     }

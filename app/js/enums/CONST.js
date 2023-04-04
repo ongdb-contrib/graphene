@@ -36,5 +36,9 @@ export default {
   MENU_TASK: 'menu_task',
   MENU_EXPORT: 'menu_export',
   MENU_IMPORT: 'menu_import',
-  MENU_DATABASE: 'menu_database'
+  MENU_DATABASE: 'menu_database',
+  MENU_SVG_STYLE: 'menu_svg_style',
+  SVG_STYLE_RELATION: 'relation',
+  SVG_STYLE_TYPE_LINKS: 'type-links',
+  SVG_STYLE_META_RELATION: 'meta-relation',
 };

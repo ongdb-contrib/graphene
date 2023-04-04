@@ -9,6 +9,7 @@ import ExportManager from '../export/ExportManager';
 import ImportManager from '../import/ImportManager';
 import NotificationManager from '../NotificationManager';
 import CqlManager from '../cql/CqlManager';
+import StyleManager from '../style/StyleManager';
 
 /**
  * @type {string} The Id of the selected save entry
@@ -54,6 +55,9 @@ const _getHTML = (saves) => `
           <button class="import-from-arrows left" style="display: none">Import From Arrows</button>
           <button class="download-json-file left" style="display: none">Download Json File</button>
           <button class="associate-with-graph-databases left" style="display: none">Graph Databases</button>
+          <button class="svg-style-relation left" style="display: none">Relation</button>
+          <button class="svg-style-type-links left" style="display: none">Type Links</button>
+          <button class="svg-style-meta-relation left" style="display: none">Meta-Relation</button>
         </div>
         <div id="set_file_name" class="sub-header">
           <span>Save graph as:</span>
@@ -167,6 +171,7 @@ const _setupDialog = () => {
             NotificationManager.success('Save successfully loaded.');
             Dialog.close();
           } catch (e) {
+            console.log(e);
             console.log(ImportManager.getDemoJson());
             alert('【请参考样例数据】\n【数据格式需要一致，样例数据已经打印到F12控制台】\n请输入标准的JSON格式：' + ImportManager.getDemoJson());
           }
@@ -212,6 +217,15 @@ const _setupDialog = () => {
         break;
       case 'associate-with-graph-databases':
         CqlManager.cql();
+        break;
+      case 'svg-style-relation':
+        StyleManager.style(CONST.SVG_STYLE_RELATION);
+        break;
+      case 'svg-style-type-links':
+        StyleManager.style(CONST.SVG_STYLE_TYPE_LINKS);
+        break;
+      case 'svg-style-meta-relation':
+        StyleManager.style(CONST.SVG_STYLE_META_RELATION);
         break;
       default:
         break;
@@ -269,6 +283,14 @@ const _showWhich = (forSave) => {
     case CONST.MENU_DATABASE:
       document.querySelector('.dialog .header .span').innerHTML = 'Associate:';
       document.querySelector('.dialog .header .associate-with-graph-databases').style.display = 'inline';
+      isShowDeleteBtn(false);
+      break;
+    case CONST.MENU_SVG_STYLE:
+      document.querySelector('.dialog .header .' + StyleManager.getBtnId()).style.background = '#bbb';
+      document.querySelector('.dialog .header .span').innerHTML = 'Svg Style Adjust:';
+      document.querySelector('.dialog .header .svg-style-relation').style.display = 'inline';
+      document.querySelector('.dialog .header .svg-style-type-links').style.display = 'inline';
+      document.querySelector('.dialog .header .svg-style-meta-relation').style.display = 'inline';
       isShowDeleteBtn(false);
       break;
     default:

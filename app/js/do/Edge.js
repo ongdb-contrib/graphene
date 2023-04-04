@@ -6,6 +6,23 @@ import geometry from '../utils/geometry';
 
 import Property from './Property';
 import PROPERTY_TYPES from '../enums/PROPERTY_TYPES';
+import color from '../utils/color';
+import StyleManager from '../style/StyleManager';
+
+function setColor(options) {
+  const startNode = DataManager.getNode(options.startNodeId);
+  if (options.color !== undefined || startNode !== undefined) {
+    return options.color || startNode.color;
+  }
+  return color();
+}
+
+function setPathStrokeDasharray(options) {
+  if (options.pathStrokeDasharray !== undefined) {
+    return options.pathStrokeDasharray;
+  }
+  return StyleManager.getPathStrokeDasharray();
+}
 
 class Edge {
   /**
@@ -41,6 +58,9 @@ class Edge {
     this.id = options.id || createId();
     this.isSelected = options.isSelected || false;
     this.isEdge = true;
+    // this.color = options.color || this.startNode.color;
+    this.color = setColor(options);
+    this.pathStrokeDasharray = setPathStrokeDasharray(options);
   }
 
   get copy() {
@@ -53,10 +73,6 @@ class Edge {
 
   get endNode() {
     return DataManager.getNode(this.endNodeId);
-  }
-
-  get color() {
-    return this.startNode.color;
   }
 
   /**

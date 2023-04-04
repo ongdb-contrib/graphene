@@ -5,6 +5,7 @@ import DataManager from './DataManager';
 import InteractionManager from './InteractionManager';
 import geometry from './utils/geometry';
 import d3 from 'd3';
+import StyleManager from "./style/StyleManager";
 
 /**
  * Private variables/consts
@@ -45,13 +46,20 @@ const _getOpacityForEntity = (entity) => {
   return 0.15;
 };
 
-// each edge need to have it's own arrow for pointing,
+function setEdgeColor(edge) {
+  if (edge.color !== undefined) {
+    return edge.color;
+  }
+  return edge.startNode.color;
+}
+
 // so you can set different colors and opacity when selecting nodes and the edge itself
 /**
  * @param edge
  */
 const _createOrUpdateArrowForEdge = (edge) => {
-  const edgeColor = edge.color;
+  // const edgeColor = edge.color;
+  const edgeColor = setEdgeColor(edge);
   const arrowId = `end-arrow-${edge.id}`;
 
   // create an arrow
@@ -167,7 +175,8 @@ const _renderEdges = (d3Element, edgesData) => {
   edges.select('text').attr({
     x: edge => edge.middlePointWithOffset[0] + 10,
     y: edge => edge.middlePointWithOffset[1],
-    fill: edge => edge.color,
+    // fill: edge => edge.color,
+    fill: edge => setEdgeColor(edge),
     opacity: edge => _getOpacityForEntity(edge)
   }).text(e => `${e.label} (${e.properties.length})`);
 
@@ -207,10 +216,11 @@ const _renderEdges = (d3Element, edgesData) => {
     .attr({
       stroke: (edge) => {
         _createOrUpdateArrowForEdge(edge);
-        return edge.color;
+        // return edge.color;
+        return setEdgeColor(edge);
       },
       'stroke-opacity': edge => _getOpacityForEntity(edge),
-      style: (edge) => `marker-end: url(#end-arrow-${edge.id})`
+      style: (edge) => `marker-end: url(#end-arrow-${edge.id});stroke-dasharray: ${edge.pathStrokeDasharray};`,
     });
 };
 
