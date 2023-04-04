@@ -14,7 +14,7 @@
 ## Introduction
 >[图数据模型设计工具](https://ongdb-contrib.github.io/graphene/demo.html)
 
-![Instance-view Knowledge Graph](images/Instance-view Knowledge Graph.jpg)
+![Instance-view Knowledge Graph](images/Instance-view Knowledge Graph.png)
 ![intro-1](images/intro-1.jpg)
 ![intro-2](images/intro-2.jpg)
 ![intro-3](images/intro-3.jpg)
