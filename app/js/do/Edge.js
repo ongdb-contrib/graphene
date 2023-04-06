@@ -9,10 +9,24 @@ import PROPERTY_TYPES from '../enums/PROPERTY_TYPES';
 import color from '../utils/color';
 import StyleManager from '../style/StyleManager';
 
+/**
+ *缓存有颜色设置时，颜色设置顺序如下：
+ * 1.数据
+ * 2.缓存
+ * 3.跟随节点
+ * 4.随机
+ * **/
 function setColor(options) {
+  if (options.color !== undefined && options.color !== '' && options.color !== null) {
+    return options.color;
+  }
+  const localColor = StyleManager.getEdgeColor();
+  if (localColor !== undefined && localColor !== '' && localColor !== null && localColor.indexOf('#') !== -1) {
+    return localColor;
+  }
   const startNode = DataManager.getNode(options.startNodeId);
-  if (options.color !== undefined || startNode !== undefined) {
-    return options.color || startNode.color;
+  if (startNode !== undefined && startNode !== '') {
+    return startNode.color;
   }
   return color();
 }

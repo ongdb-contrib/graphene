@@ -227,6 +227,9 @@ const _setupDialog = () => {
       case 'svg-style-meta-relation':
         StyleManager.style(CONST.SVG_STYLE_META_RELATION);
         break;
+      case 'svg-style-color-refresh':
+        StyleManager.localStorageColor();
+        break;
       default:
         break;
     }

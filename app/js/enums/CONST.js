@@ -41,4 +41,5 @@ export default {
   SVG_STYLE_RELATION: 'relation',
   SVG_STYLE_TYPE_LINKS: 'type-links',
   SVG_STYLE_META_RELATION: 'meta-relation',
+  SVG_STYLE_COLOR_REFRESH: 'svg-style-color-refresh'
 };

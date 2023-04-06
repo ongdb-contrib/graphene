@@ -5,6 +5,24 @@ import color from '../utils/color';
 
 import Property from './Property';
 import PROPERTY_TYPES from '../enums/PROPERTY_TYPES';
+import StyleManager from '../style/StyleManager';
+
+/**
+ *缓存有颜色设置时，颜色设置顺序如下：
+ * 1.数据
+ * 2.缓存
+ * 3.随机
+ * **/
+function setColor(options) {
+  if (options.color !== undefined && options.color !== '' && options.color !== null) {
+    return options.color;
+  }
+  const localColor = StyleManager.getNodeColor();
+  if (localColor !== undefined && localColor !== '' && localColor !== null && localColor.indexOf('#') !== -1) {
+    return localColor;
+  }
+  return color();
+}
 
 class Node {
   /**
@@ -32,7 +50,7 @@ class Node {
 
     this.x = options.x;
     this.y = options.y;
-    this.color = options.color || color();
+    this.color = setColor(options);
     // 取消默认转小写操作
     // this.label = (options.label || 'new').toLowerCase();
     this.label = (options.label || 'new');
