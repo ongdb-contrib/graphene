@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Graphene</title>
+  <link rel="icon" type="image/png" href="./img/document-cover.png"/>
+</head>
+<body>
+<script>
+    const nmaGrad3phKey = 'nma.grad3ph'
+    const nmaGrad3ph = {"nodes":[],"edges":[]}
+    const nmaGrad3phSavesKey = 'nma.grad3ph.saves'
+    const nmaGrad3phSaves = []
+
+    const nmaGrad3phValue = localStorage.getItem(nmaGrad3phKey)
+    const nmaGrad3phSavesValue = localStorage.getItem(nmaGrad3phSavesKey)
+
+    function isNull(nmaGrad3phValue) {
+        return nmaGrad3phValue === undefined || nmaGrad3phValue === null
+    }
+
+    if (isNull(nmaGrad3phValue)) {
+        localStorage.setItem(nmaGrad3phKey, JSON.stringify(nmaGrad3ph));
+    }
+    if (isNull(nmaGrad3phSavesValue)) {
+        localStorage.setItem(nmaGrad3phSavesKey, JSON.stringify(nmaGrad3phSaves));
+    }
+</script>
+<script src="../build/bundle.js"></script>
+</body>
+</html>
