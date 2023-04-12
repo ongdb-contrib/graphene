@@ -1,0 +1,103 @@
+#side-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 120px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s
+}
+
+#side-panel.hasOpen {
+  bottom: 55px;
+  width: 380px;
+}
+
+#side-panel .CodeMirror {
+  height: auto;
+  width: 100%;
+}
+
+#side-panel > section {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  display: block;
+  height: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#side-panel > section:last-child {
+  border-bottom: none;
+}
+
+#side-panel > section.open {
+  display: flex;
+  flex: 1;
+}
+
+#side-panel > header {
+  background: #fafafa;
+  padding: 3px 10px 3px 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+#side-panel > header.open {
+  border-bottom: solid 1px #ddd;
+}
+
+#side-panel > header::after {
+  content: '';
+  position: absolute;
+  height: 0;
+  border: solid 4px transparent;
+  border-top-color: #aaa;
+  left: 7px;
+  top: 12px;
+}
+
+#side-panel > header.open::after {
+  border-bottom-color: #aaa;
+  border-top-color: transparent;
+  top: 8px;
+}
+
+/* */
+
+#side-panel-properties.open {
+  min-height: 340px;
+}
+
+#properties-list .schema_indexes .property .propertyName {
+  color: #ccc;
+}
+
+#properties-search {
+  position: absolute;
+  top: 45px;
+  left: 130px;
+  width: 190px;
+  z-index: 999;
+}
+
+#properties-search-result {
+  /*background: #d8e3ed;*/
+  background: rgba(216,227,237,0.5);
+}
+
+#properties-search-input {
+  background: rgba(247,194,194,0.5);
+  width: 103px;
+  height: 20px;
+  border: inset;
+}
+
+#properties-search-result .li:hover {
+  background: #ccc;
+}
+
